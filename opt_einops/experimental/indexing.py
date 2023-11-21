@@ -47,7 +47,7 @@ Some important properties of this notation:
 - 'batch' indexing, when some axes of indexer and array should be matched
 - universal (one-indexing-to-rule-them-all)
 - extensible for (named) ellipses, including variadic number of indexers
-- extensible for einops-style compositions and decompositions
+- extensible for opt_einops-style compositions and decompositions
 - extensible for outer indexing when indexers are not aligned
 
 Current implementation based on python array api and uses loops,
@@ -57,7 +57,7 @@ because no appropriate indexing available in the standard.
 
 from typing import List, Union, TypeVar, Tuple
 
-from einops import EinopsError
+from opt_einops import EinopsError
 
 T = TypeVar('T')
 

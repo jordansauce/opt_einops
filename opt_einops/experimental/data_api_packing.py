@@ -1,6 +1,6 @@
 from typing import List, TypeVar, Tuple, Sequence
 
-from einops import EinopsError
+from opt_einops import EinopsError
 
 T = TypeVar('T')
 

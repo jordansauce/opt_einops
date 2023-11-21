@@ -3,8 +3,8 @@ import itertools
 import numpy
 import pytest
 
-from einops import EinopsError
-from einops.einops import rearrange, reduce, repeat, _enumerate_directions
+from opt_einops import EinopsError
+from opt_einops.opt_einops import rearrange, reduce, repeat, _enumerate_directions
 from . import collect_test_backends, is_backend_tested, FLOAT_REDUCTIONS as REDUCTIONS
 
 imp_op_backends = collect_test_backends(symbolic=False, layers=False)
@@ -113,7 +113,7 @@ def test_ellipsis_ops_imperative():
 
 def test_rearrange_array_api():
     import numpy.array_api as xp
-    from einops import array_api as AA
+    from opt_einops import array_api as AA
 
     x = numpy.arange(2 * 3 * 4 * 5 * 6).reshape([2, 3, 4, 5, 6])
     for pattern in identity_patterns + list(itertools.chain(*equivalent_rearrange_patterns)):
@@ -124,7 +124,7 @@ def test_rearrange_array_api():
 
 def test_reduce_array_api():
     import numpy.array_api as xp
-    from einops import array_api as AA
+    from opt_einops import array_api as AA
 
     x = numpy.arange(2 * 3 * 4 * 5 * 6).reshape([2, 3, 4, 5, 6])
     for pattern in itertools.chain(*equivalent_reduction_patterns):
@@ -351,7 +351,7 @@ def test_reduction_with_callable_imperatives():
         y = numpy.sum(y, axis=tuple_of_axes)
         return numpy.log(y) + minused
 
-    from einops._backends import TorchBackend, ChainerBackend, TensorflowBackend, KerasBackend, NumpyBackend
+    from opt_einops._backends import TorchBackend, ChainerBackend, TensorflowBackend, KerasBackend, NumpyBackend
 
     backend2callback = {
         TorchBackend.framework_name: logsumexp_torch,
@@ -538,7 +538,7 @@ def test_repeat_symbolic():
 
 def test_repeat_array_api():
     import numpy.array_api as xp
-    from einops import array_api as AA
+    from opt_einops import array_api as AA
 
     x = numpy.arange(2 * 3 * 5).reshape([2, 3, 5])
 

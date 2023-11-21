@@ -459,7 +459,7 @@ def _prepare_recipes_for_all_dims(
 
 def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reduction, **axes_lengths: int) -> Tensor:
     """
-    einops.reduce provides combination of reordering and reduction using reader-friendly notation.
+    opt_einops.reduce provides combination of reordering and reduction using reader-friendly notation.
 
     Examples for reduce operation:
 
@@ -536,7 +536,7 @@ def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reducti
 
 def rearrange(tensor: Union[Tensor, List[Tensor]], pattern: str, **axes_lengths) -> Tensor:
     """
-    einops.rearrange is a reader-friendly smart element reordering for multidimensional tensors.
+    opt_einops.rearrange is a reader-friendly smart element reordering for multidimensional tensors.
     This operation includes functionality of transpose (axes permutation), reshape (view), squeeze, unsqueeze,
     stack, concatenate and other operations.
 
@@ -577,7 +577,7 @@ def rearrange(tensor: Union[Tensor, List[Tensor]], pattern: str, **axes_lengths)
     ```
 
     When composing axes, C-order enumeration used (consecutive elements have different last axis)
-    Find more examples in einops tutorial.
+    Find more examples in opt_einops tutorial.
 
     Parameters:
         tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
@@ -594,7 +594,7 @@ def rearrange(tensor: Union[Tensor, List[Tensor]], pattern: str, **axes_lengths)
 
 def repeat(tensor: Union[Tensor, List[Tensor]], pattern: str, **axes_lengths) -> Tensor:
     """
-    einops.repeat allows reordering elements and repeating them in arbitrary combinations.
+    opt_einops.repeat allows reordering elements and repeating them in arbitrary combinations.
     This operation includes functionality of repeat, tile, broadcast functions.
 
     Examples for repeat operation:
@@ -627,7 +627,7 @@ def repeat(tensor: Union[Tensor, List[Tensor]], pattern: str, **axes_lengths) ->
     ```
 
     When composing axes, C-order enumeration used (consecutive elements have different last axis)
-    Find more examples in einops tutorial.
+    Find more examples in opt_einops tutorial.
 
     Parameters:
         tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
@@ -826,7 +826,7 @@ def einsum(tensor1: Tensor, tensor2: Tensor, tensor3: Tensor, tensor4: Tensor, p
 
 def einsum(*tensors_and_pattern: Union[Tensor, str]) -> Tensor:
     """
-    einops.einsum calls einsum operations with einops-style named
+    opt_einops.einsum calls einsum operations with opt_einops-style named
     axes indexing, computing tensor products with an arbitrary
     number of tensors. Unlike typical einsum syntax, here you must
     pass tensors first, and then the pattern.
@@ -890,12 +890,12 @@ def einsum(*tensors_and_pattern: Union[Tensor, str]) -> Tensor:
     """
     if len(tensors_and_pattern) <= 1:
         raise ValueError(
-            "`einops.einsum` takes at minimum two arguments: the tensors (at least one), followed by the pattern."
+            "`opt_einops.einsum` takes at minimum two arguments: the tensors (at least one), followed by the pattern."
         )
     pattern = tensors_and_pattern[-1]
     if not isinstance(pattern, str):
         raise ValueError(
-            "The last argument passed to `einops.einsum` must be a string, representing the einsum pattern."
+            "The last argument passed to `opt_einops.einsum` must be a string, representing the einsum pattern."
         )
     tensors = tensors_and_pattern[:-1]
     pattern = _compactify_pattern_for_einsum(pattern)

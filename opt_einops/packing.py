@@ -1,7 +1,7 @@
 from functools import lru_cache
 from typing import List, Union, TypeVar, Tuple, Sequence
 
-from einops import EinopsError
+from opt_einops import EinopsError
 
 from opt_einops._backends import get_backend
 from opt_einops.parsing import ParsedExpression
@@ -34,7 +34,7 @@ def analyze_pattern(pattern: str, opname: str) -> Tuple[int, int, int]:
 def pack(tensors: Sequence[Tensor], pattern: str) -> Tuple[Tensor, List[Shape]]:
     """
     Packs several tensors into one.
-    See einops tutorial for introduction into packing (and how it replaces stack and concatenation).
+    See opt_einops tutorial for introduction into packing (and how it replaces stack and concatenation).
 
     Parameters:
         tensors: tensors to be packed, can be of different dimensionality
@@ -98,7 +98,7 @@ def prod(x: Shape) -> int:
 def unpack(tensor: Tensor, packed_shapes: List[Shape], pattern: str) -> List[Tensor]:
     """
     Unpacks a single tensor into several by splitting over a selected axes.
-    See einops tutorial for introduction into packing (and how it replaces stack and concatenation).
+    See opt_einops tutorial for introduction into packing (and how it replaces stack and concatenation).
 
     Parameters:
         tensor: tensor to be unpacked

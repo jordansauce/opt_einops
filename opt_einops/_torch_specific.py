@@ -1,5 +1,5 @@
 """
-Specialization of einops for torch.
+Specialization of opt_einops for torch.
 
 Unfortunately, torch's jit scripting mechanism isn't strong enough,
 and to have scripting supported at least for layers,
@@ -13,7 +13,7 @@ import warnings
 from typing import Dict, List, Tuple
 
 import torch
-from opt_einops.einops import TransformRecipe, _reconstruct_from_shape_uncached
+from opt_einops.opt_einops import TransformRecipe, _reconstruct_from_shape_uncached
 
 
 class TorchJitBackend:
@@ -72,7 +72,7 @@ class TorchJitBackend:
         return x.reshape(shape)
 
 
-# mirrors einops.einops._apply_recipe
+# mirrors opt_einops.opt_einops._apply_recipe
 def apply_for_scriptable_torch(
     recipe: TransformRecipe, tensor: torch.Tensor, reduction_type: str, axes_dims: List[Tuple[str, int]]
 ) -> torch.Tensor:
@@ -108,7 +108,7 @@ def allow_ops_in_compiled_graph():
         warnings.warn("allow_ops_in_compiled_graph failed to import torch: ensure pytorch >=2.0", ImportWarning)
         return
 
-    from .einops import rearrange, reduce, repeat, einsum
+    from .opt_einops import rearrange, reduce, repeat, einsum
     from .packing import pack, unpack
 
     allow_in_graph(rearrange)

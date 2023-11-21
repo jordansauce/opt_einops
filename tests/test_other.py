@@ -8,11 +8,11 @@ import pytest
 
 from parameterized import parameterized, parameterized_class
 
-import einops
-import einops.layers
-import einops.parsing
-from einops._backends import AbstractBackend
-from einops.einops import rearrange, parse_shape, _optimize_transformation
+import opt_einops
+import opt_einops.layers
+import opt_einops.parsing
+from opt_einops._backends import AbstractBackend
+from opt_einops.opt_einops import rearrange, parse_shape, _optimize_transformation
 from . import collect_test_backends, is_backend_tested
 
 __author__ = "Alex Rogozhnikov"
@@ -21,8 +21,8 @@ __author__ = "Alex Rogozhnikov"
 def test_doctests_examples():
     if sys.version_info >= (3, 6):
         # python 3.5 and lower do not keep ordered dictionaries
-        testmod(einops.layers, raise_on_error=True, extraglobs=dict(np=numpy))
-        testmod(einops.einops, raise_on_error=True, extraglobs=dict(np=numpy))
+        testmod(opt_einops.layers, raise_on_error=True, extraglobs=dict(np=numpy))
+        testmod(opt_einops.opt_einops, raise_on_error=True, extraglobs=dict(np=numpy))
 
 
 def test_backends_installed():
@@ -115,10 +115,10 @@ class TestParseShapeImperative(unittest.TestCase):
         assert parsed1 == parsed2 == dict(a1=30, a1a111a=40)
 
     def test_repeating(self):
-        with pytest.raises(einops.EinopsError):
+        with pytest.raises(opt_einops.EinopsError):
             parse_shape(self.x, "a a b b")
 
-        with pytest.raises(einops.EinopsError):
+        with pytest.raises(opt_einops.EinopsError):
             parse_shape(self.backend.from_numpy(self.x), "a a b b")
 
     @parameterized.expand(
@@ -240,8 +240,8 @@ def test_torch_compile():
         pytest.skip()
     import torch
     from torch import nn
-    from einops import repeat, reduce, pack, unpack, einsum
-    from einops._torch_specific import allow_ops_in_compiled_graph
+    from opt_einops import repeat, reduce, pack, unpack, einsum
+    from opt_einops._torch_specific import allow_ops_in_compiled_graph
 
     allow_ops_in_compiled_graph()
     class TorchModuleWithOperations(nn.Module):

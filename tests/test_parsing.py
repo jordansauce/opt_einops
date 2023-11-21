@@ -1,7 +1,7 @@
 import pytest
 
-from einops import EinopsError
-from einops.parsing import ParsedExpression, AnonymousAxis, _ellipsis
+from opt_einops import EinopsError
+from opt_einops.parsing import ParsedExpression, AnonymousAxis, _ellipsis
 
 __author__ = 'Alex Rogozhnikov'
 

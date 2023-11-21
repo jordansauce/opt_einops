@@ -5,7 +5,7 @@ from collections import namedtuple
 import numpy
 import pytest
 
-from einops import rearrange, reduce
+from opt_einops import rearrange, reduce
 from . import collect_test_backends, is_backend_tested, FLOAT_REDUCTIONS as REDUCTIONS
 
 __author__ = "Alex Rogozhnikov"
@@ -178,7 +178,7 @@ def create_torch_model(use_reduce=False, add_scripted_layer=False):
         pytest.skip()
     else:
         from torch.nn import Sequential, Conv2d, MaxPool2d, Linear, ReLU
-        from einops.layers.torch import Rearrange, Reduce, EinMix
+        from opt_einops.layers.torch import Rearrange, Reduce, EinMix
         import torch.jit
 
         return Sequential(
@@ -246,7 +246,7 @@ def test_keras_layer():
         import tensorflow as tf
         from tensorflow.keras.models import Sequential
         from tensorflow.keras.layers import Conv2D as Conv2d, Dense as Linear, ReLU
-        from einops.layers.keras import Rearrange, Reduce, EinMix, keras_custom_objects
+        from opt_einops.layers.keras import Rearrange, Reduce, EinMix, keras_custom_objects
 
         def create_keras_model():
             return Sequential(
@@ -298,8 +298,8 @@ def test_chainer_layer():
         import chainer
         import chainer.links as L
         import chainer.functions as F
-        from einops.layers.chainer import Rearrange, Reduce, EinMix
-        from einops import asnumpy
+        from opt_einops.layers.chainer import Rearrange, Reduce, EinMix
+        from opt_einops import asnumpy
         import numpy as np
 
         def create_model():
@@ -344,7 +344,7 @@ def test_flax_layers():
 
         import flax
         from flax import linen as nn
-        from einops.layers.flax import EinMix, Reduce, Rearrange
+        from opt_einops.layers.flax import EinMix, Reduce, Rearrange
 
         class NN(nn.Module):
             @nn.compact

@@ -4,7 +4,7 @@ import typing
 import numpy as np
 import pytest
 
-from einops import EinopsError, asnumpy, pack, unpack
+from opt_einops import EinopsError, asnumpy, pack, unpack
 from tests import collect_test_backends
 
 
@@ -271,7 +271,7 @@ def test_pack_unpack_against_numpy():
 
 
 def test_pack_unpack_array_api():
-    from einops import array_api as AA
+    from opt_einops import array_api as AA
     import numpy.array_api as xp
 
     for case in cases:

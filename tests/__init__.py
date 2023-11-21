@@ -3,7 +3,7 @@ import os
 from functools import lru_cache
 from typing import List, Tuple
 
-from einops import _backends
+from opt_einops import _backends
 import warnings
 
 __author__ = "Alex Rogozhnikov"

@@ -2,7 +2,7 @@
 Usage: python test.py <frameworks>
 
 1. Installs part of dependencies (make sure `which pip` points to correct location)
-2. Installs current version of einops in editable mode
+2. Installs current version of opt_einops in editable mode
 3. Runs the tests
 """
 
@@ -81,7 +81,7 @@ def main():
     print("Install testing infra")
     assert 0 == run("pip install {} --progress-bar off".format(" ".join(other_dependencies)))
 
-    # install einops
+    # install opt_einops
     assert 0 == run("pip install -e .")
 
     # we need to inform testing script which frameworks to use

@@ -1,5 +1,5 @@
 """
-Backends in `einops` are organized to meet the following requirements
+Backends in `opt_einops` are organized to meet the following requirements
 - backends are not imported unless those are actually needed, because
     - backends may not be installed
     - importing all available backends will drive to significant memory footprint
@@ -56,7 +56,7 @@ def get_backend(tensor) -> "AbstractBackend":
                     _type2backend[_type] = backend
                     return backend
 
-    raise RuntimeError("Tensor type unknown to einops {}".format(type(tensor)))
+    raise RuntimeError("Tensor type unknown to opt_einops {}".format(type(tensor)))
 
 
 class AbstractBackend:
@@ -128,7 +128,7 @@ class AbstractBackend:
         raise NotImplementedError("backend does not provide layers")
 
     def __repr__(self):
-        return "<einops backend for {}>".format(self.framework_name)
+        return "<opt_einops backend for {}>".format(self.framework_name)
 
     def einsum(self, pattern, *x):
         raise NotImplementedError("backend does not support einsum")

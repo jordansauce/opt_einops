@@ -1,7 +1,7 @@
 import numpy
 import pytest
 
-from einops import rearrange, parse_shape, reduce
+from opt_einops import rearrange, parse_shape, reduce
 from tests import is_backend_tested
 from tests.test_ops import imp_op_backends
 

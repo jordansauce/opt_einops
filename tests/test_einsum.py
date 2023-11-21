@@ -1,7 +1,7 @@
 from typing import Any, Callable
 from venv import create
 from . import collect_test_backends
-from einops.einops import _compactify_pattern_for_einsum, einsum, EinopsError
+from opt_einops.opt_einops import _compactify_pattern_for_einsum, einsum, EinopsError
 import numpy as np
 import pytest
 import string
@@ -205,7 +205,7 @@ def test_functional():
             ]
             
             # Loop over whether we call it manually with the backend,
-            # or whether we use `einops.einsum`.
+            # or whether we use `opt_einops.einsum`.
             for do_manual_call in [True, False]:
                 # Actually run einsum:
                 if do_manual_call:
@@ -329,7 +329,7 @@ def test_functional_errors():
         )
 
     # raise ValueError(
-    # "The last argument passed to `einops.einsum` must be a string,"
+    # "The last argument passed to `opt_einops.einsum` must be a string,"
     # " representing the einsum pattern."
     # )
     with pytest.raises(ValueError, match="^The last argument"):
@@ -339,16 +339,16 @@ def test_functional_errors():
         )
 
     # raise ValueError(
-    #     "`einops.einsum` takes at minimum two arguments: the tensors,"
+    #     "`opt_einops.einsum` takes at minimum two arguments: the tensors,"
     #     " followed by the pattern."
     # )
-    with pytest.raises(ValueError, match="^`einops.einsum` takes"):
+    with pytest.raises(ValueError, match="^`opt_einops.einsum` takes"):
         einsum(
             "i j k -> i",
         )
-    with pytest.raises(ValueError, match="^`einops.einsum` takes"):
+    with pytest.raises(ValueError, match="^`opt_einops.einsum` takes"):
         einsum(
             create_tensor(5, 1),
         )
 
-    # TODO: Include check for giving normal einsum pattern rather than einops.
+    # TODO: Include check for giving normal einsum pattern rather than opt_einops.
