@@ -1,4 +1,4 @@
-from opt_einops import EinopsError
+from einops import EinopsError
 import keyword
 import warnings
 from typing import List, Optional, Set, Tuple, Union

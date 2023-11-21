@@ -13,7 +13,7 @@ import warnings
 from typing import Dict, List, Tuple
 
 import torch
-from einops.einops import TransformRecipe, _reconstruct_from_shape_uncached
+from opt_einops.einops import TransformRecipe, _reconstruct_from_shape_uncached
 
 
 class TorchJitBackend:
