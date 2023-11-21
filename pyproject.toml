@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "opt_einops"
-description = "A new flavour of deep learning operations"
+description = "Optimized convenient tensor operations and contractions (combining einiops with opt_einsum)"
 readme = "README.md"
 requires-python = ">=3.8"
 
@@ -23,13 +23,13 @@ classifiers = [
     'License :: OSI Approved :: MIT License',
 ]
 dependencies = [
-    # no run-time or installation-time dependencies
+    "opt_einsum"
 ]
 dynamic = ["version"]
-authors = [{ name = 'Alex Rogozhnikov' }]
+authors = [{ name = 'Jordan Taylor' }]
 
 [project.urls]
-Homepage = 'https://github.com/arogozhnikov/einops'
+Homepage = 'https://github.com/jordansauce/opt_einops'
 
 [tool.setuptools]
 packages = ['opt_einops', 'opt_einops.layers']
