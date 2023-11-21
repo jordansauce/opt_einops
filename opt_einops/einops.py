@@ -2,6 +2,7 @@ import functools
 import itertools
 import string
 import typing
+import opt_einsum
 from collections import OrderedDict
 from typing import Set, Tuple, List, Dict, Union, Callable, Optional, TypeVar, cast, Any
 
@@ -898,4 +899,4 @@ def einsum(*tensors_and_pattern: Union[Tensor, str]) -> Tensor:
         )
     tensors = tensors_and_pattern[:-1]
     pattern = _compactify_pattern_for_einsum(pattern)
-    return get_backend(tensors[0]).einsum(pattern, *tensors)
+    return opt_einsum.contract(pattern, *tensors)

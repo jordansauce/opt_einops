@@ -3,8 +3,8 @@ from typing import List, Union, TypeVar, Tuple, Sequence
 
 from einops import EinopsError
 
-from einops._backends import get_backend
-from einops.parsing import ParsedExpression
+from opt_einops._backends import get_backend
+from opt_einops.parsing import ParsedExpression
 
 Tensor = TypeVar('Tensor')
 
