@@ -1,6 +1,6 @@
 
 # opt_einops 
-A simple fork of the [einops](https://github.com/arogozhnikov/einops) tensor manipuation package, where the einsums are passed to [opt_einsum](https://github.com/dgasmith/opt_einsum) for more efficient tensor contraction orders. All syntax is the same as that of [einops](https://github.com/arogozhnikov/einops). 
+A simple fork of the [einops](https://github.com/arogozhnikov/einops) tensor manipuation package, where the einsums are passed to [opt_einsum](https://github.com/dgasmith/opt_einsum) for more efficient tensor contraction orders. All syntax is the same as that of [einops](https://github.com/arogozhnikov/einops) version 0.7.0. 
 
 
 ## Installation  <a name="Installation"></a>
